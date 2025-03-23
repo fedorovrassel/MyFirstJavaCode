@@ -1,8 +1,11 @@
 package ru.my.first;
 
 
-public class Main {
+public class FirstJavaCode {
     public static void main(String[] args) {
-        System.out.println("Hello and welcome!");
+        System.out.println(test("Hello", "World"));
+    }
+    public static String test (String l, String b) {
+        return (l + ", " + b + "!");
     }
 }
