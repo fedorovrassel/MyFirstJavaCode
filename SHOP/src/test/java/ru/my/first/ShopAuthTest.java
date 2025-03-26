@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class ShopAuthTest {
     private WebDriver driver;
-    private StringBuffer verificationErrors = new StringBuffer();
+    public StringBuffer verificationErrors = new StringBuffer();
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
@@ -31,7 +31,7 @@ public class ShopAuthTest {
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
+        if (!verificationErrorString.isEmpty()) {
             fail(verificationErrorString);
         }
     }
