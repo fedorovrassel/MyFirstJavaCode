@@ -7,7 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class ShopAuthTest {
-    WebDriver driver;
+    private WebDriver driver;
+    private StringBuffer verificationErrors = new StringBuffer();
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
@@ -17,7 +18,7 @@ public class ShopAuthTest {
     }
 
     @Test
-    public void testAuthSucces() {
+    public void testAuthSuccesTestCase() throws Exception {
         driver.findElement(By.linkText("Вход")).click();
         driver.findElement(By.id("exampleInputEmail1")).click();
         driver.findElement(By.id("exampleInputEmail1")).sendKeys("test@mail.com");
@@ -26,8 +27,12 @@ public class ShopAuthTest {
         driver.findElement(By.name("_csrf")).click();
     }
 
-   @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         driver.quit();
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
     }
 }
