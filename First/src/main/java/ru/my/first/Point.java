@@ -17,7 +17,7 @@ public class Point {
         double X = p2.x - p1.x;
         double Y = p2.y - p1.y;
 
-        BigDecimal b = new BigDecimal(Math.sqrt(X * X + Y * Y));
+        BigDecimal b = BigDecimal.valueOf(Math.sqrt(X * X + Y * Y));
         return b.setScale(1, RoundingMode.HALF_UP).doubleValue();
     }
 }
