@@ -4,25 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.my.first.model.LoginData;
 
-public class LoginHelper {
-    private WebDriver webDriver;
+public class LoginHelper extends HelperBase {
 
     public LoginHelper(WebDriver webDriver) {
-        this.webDriver = webDriver;
+        super(webDriver);
     }
 
     public void fillLoginForm(LoginData loginData) {
-        webDriver.findElement(By.id("exampleInputEmail1")).click();
-        webDriver.findElement(By.id("exampleInputEmail1")).sendKeys(loginData.getLogin());
-        webDriver.findElement(By.id("exampleInputPassword1")).click();
-        webDriver.findElement(By.id("exampleInputPassword1")).sendKeys(loginData.getPassword());
+        fillField(By.id("exampleInputEmail1"), loginData.getLogin());
+        fillField(By.id("exampleInputPassword1"), loginData.getPassword());
     }
 
     public void getEntry() {
-        webDriver.findElement(By.name("_csrf")).click();
+        click(By.name("_csrf"));
     }
 
     public void gotoSignUp() {
-        webDriver.findElement(By.linkText("Вход")).click();
+        click(By.linkText("Вход"));
     }
 }
