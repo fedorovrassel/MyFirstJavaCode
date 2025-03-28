@@ -1,4 +1,4 @@
-package ru.my.first;
+package ru.my.first.model;
 
 public class LoginData {
     private final String login;
